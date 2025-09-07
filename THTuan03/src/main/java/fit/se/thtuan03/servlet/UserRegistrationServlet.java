@@ -1,16 +1,16 @@
 package fit.se.thtuan03.servlet;
 
 import fit.se.thtuan03.model.User;
+import fit.se.thtuan03.dao.UserDAO;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 @WebServlet("/user-registration")
@@ -22,16 +22,16 @@ public class UserRegistrationServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Redirect to registration form
-        response.sendRedirect("user-registration.jsp");
+        response.sendRedirect(request.getContextPath() + "/user-registration.jsp");
+
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
             // Get form parameters
             String firstName = request.getParameter("firstName");
@@ -41,37 +41,24 @@ public class UserRegistrationServlet extends HttpServlet {
             String password = request.getParameter("password");
             String birthdayStr = request.getParameter("birthday");
             String gender = request.getParameter("gender");
-            
-            // Validate data
+
+            // Basic validation
             StringBuilder errorMessages = new StringBuilder();
-            
-            // Validate required fields
-            if (firstName == null || firstName.trim().isEmpty()) {
-                errorMessages.append("First name is required. ");
-            }
-            
-            if (lastName == null || lastName.trim().isEmpty()) {
-                errorMessages.append("Last name is required. ");
-            }
-            
+            if (firstName == null || firstName.trim().isEmpty()) errorMessages.append("First name is required. ");
+            if (lastName == null || lastName.trim().isEmpty()) errorMessages.append("Last name is required. ");
             if (email == null || email.trim().isEmpty()) {
                 errorMessages.append("Email is required. ");
             } else if (!isValidEmail(email)) {
                 errorMessages.append("Invalid email format. ");
             }
-            
             if (reenterEmail == null || !email.equals(reenterEmail)) {
                 errorMessages.append("Email addresses do not match. ");
             }
-            
             if (password == null || password.length() < 6) {
                 errorMessages.append("Password must be at least 6 characters long. ");
             }
-            
-            if (gender == null || gender.trim().isEmpty()) {
-                errorMessages.append("Gender is required. ");
-            }
-            
+            if (gender == null || gender.trim().isEmpty()) errorMessages.append("Gender is required. ");
+
             // Parse birthday
             LocalDate birthday = null;
             if (birthdayStr != null && !birthdayStr.trim().isEmpty()) {
@@ -83,52 +70,54 @@ public class UserRegistrationServlet extends HttpServlet {
             } else {
                 errorMessages.append("Birthday is required. ");
             }
-            
-            // If there are validation errors, redirect back to form
+
+            // Nếu có lỗi -> quay lại form
             if (errorMessages.length() > 0) {
                 request.setAttribute("errorMessage", errorMessages.toString());
                 request.setAttribute("firstName", firstName);
                 request.setAttribute("lastName", lastName);
                 request.setAttribute("email", email);
                 request.setAttribute("gender", gender);
-                
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher("user-registration.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
-            
-            // Create User object
+
+            // Tạo User object
             User user = new User(
-                firstName.trim(),
-                lastName.trim(),
-                email.trim().toLowerCase(),
-                password, // In real application, you should hash the password
-                birthday,
-                gender
+                    firstName.trim(),
+                    lastName.trim(),
+                    email.trim().toLowerCase(),
+                    password,
+                    birthday,
+                    gender
             );
-            
-            // Store user in session or database (for demo, we'll use request attribute)
-            request.setAttribute("user", user);
-            request.setAttribute("successMessage", "Registration successful!");
-            
-            // Forward to success page
-            RequestDispatcher dispatcher = request.getRequestDispatcher("registration-success.jsp");
-            dispatcher.forward(request, response);
-            
+
+            // Lưu xuống database qua DAO
+            boolean saved = UserDAO.save(user);
+
+            if (saved) {
+                request.setAttribute("successMessage", "Registration successful!");
+                request.setAttribute("user", user);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("registration-success.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                request.setAttribute("errorMessage", "Could not save user. Email may already exist.");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("user-registration.jsp");
+                dispatcher.forward(request, response);
+            }
+
         } catch (Exception e) {
-            // Handle any unexpected errors
             e.printStackTrace();
-            request.setAttribute("errorMessage", "An unexpected error occurred. Please try again.");
+            request.setAttribute("errorMessage", "Unexpected error: " + e.getMessage());
             RequestDispatcher dispatcher = request.getRequestDispatcher("user-registration.jsp");
             dispatcher.forward(request, response);
         }
     }
-    
-    /**
-     * Simple email validation method
-     */
+
     private boolean isValidEmail(String email) {
-        return email != null && 
-               email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+        return email != null &&
+                email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     }
 }
