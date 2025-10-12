@@ -1,5 +1,7 @@
 package fit.se.baitap2.models;
+import org.springframework.stereotype.Component;
 
+@Component // Đánh dấu lớp này là một Spring bean
 public class Address {
     private String city;
     private String state;

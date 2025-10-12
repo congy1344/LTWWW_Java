@@ -1,9 +1,17 @@
 package fit.se.baitap2.models;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component // Đánh dấu lớp này là một Spring bean
 public class Employee {
-    private int id;
-    private String name;
-    private Address address; // Employee phụ thuộc vào Address
+    private int id = 201; // Gán giá trị mặc định
+    private String name = "Le Van C";
+    private Address address;
+
+    @Autowired
+    public Employee(Address address) {
+        this.address = address;
+    }
 
     // Constructors
     public Employee() {
