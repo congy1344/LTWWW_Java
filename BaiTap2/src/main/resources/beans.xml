@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myAddress" class="fit.se.baitap2.models.Address">
+        <constructor-arg value="Ho Chi Minh City"/>
+        <constructor-arg value="HCMC"/>
+        <constructor-arg value="Vietnam"/>
+    </bean>
+
+    <bean id="employeeSetter" class="fit.se.baitap2.models.Employee">
+        <property name="id" value="101"/>
+        <property name="name" value="Nguyen Van A"/>
+        <property name="address" ref="myAddress"/>
+    </bean>
+
+    <bean id="employeeConstructor" class="fit.se.baitap2.models.Employee">
+        <constructor-arg index="0" value="102"/>
+        <constructor-arg index="1" value="Tran Thi B"/>
+        <constructor-arg index="2" ref="myAddress"/>
+    </bean>
+
+</beans>
