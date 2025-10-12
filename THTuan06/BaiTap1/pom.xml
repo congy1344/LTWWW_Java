@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fit.se</groupId>
-    <artifactId>THTuan06</artifactId>
+    <artifactId>BaiTap1</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>THTuan06</name>
     <packaging>war</packaging>
