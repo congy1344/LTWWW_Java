@@ -5,32 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="237e0e38-be9f-4524-b76d-70a87acf4267" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/autowired/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/autowired/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/autowired/MyNumberFormatter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/autowired/MyNumberFormatterService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/javabased/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/javabased/Group.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/javabased/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/javabased/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/xmlbased/Class_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/xmlbased/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit/se/thtuan06/beans/xmlbased/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/beans.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../THTuan05/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../THTuan05/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +30,7 @@
     </option>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": -1
+  "associatedIndex": 1
 }]]></component>
   <component name="ProjectId" id="33wo5VT8kIhq8zyP4eeRM3XZlQ7" />
   <component name="ProjectViewState">
@@ -69,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "T:/LTWWW_Java/THTuan06/BaiTap1",
+    "last_opened_file_path": "T:/LTWWW_Java/THLab4",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -127,6 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1760237314518</updated>
       <workItem from="1760237315484" duration="4733000" />
+      <workItem from="1762657839213" duration="47000" />
     </task>
     <servers />
   </component>
