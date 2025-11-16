@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: html(content = ~{::content}, title='Create Document Page')">
+<body>
+<div th:fragment="content">
+    <h3>Create Document</h3>
+
+    <form action="/documents/create" method="post">
+        <label>Title:</label>
+        <input name="title"><br/>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

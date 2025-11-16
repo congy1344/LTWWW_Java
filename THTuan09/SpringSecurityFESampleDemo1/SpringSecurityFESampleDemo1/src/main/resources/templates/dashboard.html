@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: html(content = ~{::content}, title='Dashboard Page')">
+<body>
+<div th:fragment="content">
+    <h3>Dashboard</h3>
+    <p>Only user has: Role Admin</p>
+</div>
+</body>
+</html>

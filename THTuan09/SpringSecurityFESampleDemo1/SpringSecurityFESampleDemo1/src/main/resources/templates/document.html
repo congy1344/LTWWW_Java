@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: html(content = ~{::content}, title='Login Page')">
+<body>
+<div th:fragment="content">
+        <h3>Document List</h3>
+        <p>Only user has: Permission Read || Role Admin</p>
+    </div>
+</body>
+</html>
